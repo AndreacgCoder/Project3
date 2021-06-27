@@ -115,8 +115,6 @@ const deletePlayers = async (player_id) => {
     
 }
 
-
-
 module.exports = {
     getTeams,
     newTeams,

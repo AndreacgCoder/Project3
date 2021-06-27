@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.put("/:player_id" , async(req, res) => {
+router.put("/:player_id/:name_player" , async(req, res) => {
     const {player_id, name_player} = req.params;
     const {team_player, num_player, roll_player} = req.body;
     if(!team_player) {
@@ -64,7 +64,7 @@ router.put("/:player_id" , async(req, res) => {
             .status(400)
             .json(errorResult("Missing 'roll_player' field"));
     }
-    const { ok, found, data} = await db.updatePlayers(player_id,team_player,name_player,num_player, roll_player);
+    const { ok, found, data} = await db.updatePlayers(player_id,team_player, name_player, num_player, roll_player);
     if(!ok) {
         return res.status(500).json(errorResult(data));
     }else if (!found) {
